@@ -1,0 +1,44 @@
+Veranda SID Player
+==================
+
+A port of the CommanderSID project's SID player (SIDPLAY.PRG,
+software/rev-b/sidplay.s) to Veranda, the GEOS-style desktop for the
+Commander X16, as a native Veranda application.
+
+Credit: the CommanderSID project (the X16-SID card, its firmware and its
+software), Copyright (C) 2026 Marcin Spoczynski. The player's behaviour,
+its mailbox protocol and its tables come from it.
+
+Ported from the CommanderSID working tree at commit 03007ec, with
+uncommitted changes as of 2026-11-16.
+
+Licence: GPL-3.0-or-later, as the CommanderSID project's software (its
+LICENSE.md). The full text is in COPYING.
+
+Copied or derived from CommanderSID, with attribution in each file:
+  src/card.s           software/common/mbox.inc (the mailbox's frames, CRC-8),
+                       software/common/sid.inc (the window, ARM/DISARM),
+                       software/rev-b/sidplay.s (the envelope model, the
+                       uploads, the requests), software/rev-b/sidplay_tables.inc
+  src/tune.c           software/rev-b/sidplay.s (play_file, read_header,
+                       upload, play_song, song_lengths, roms_load, stop, pause)
+  src/viz.c, viz.s     software/rev-b/sidplay.s (draw_voices, draw_scopes,
+                       scope_sample, tracker_row, draw_adsr, draw_filter),
+                       sidplay_tables.inc (the note boundaries)
+  src/list.c           software/rev-b/sidplay.s (read_dir's order)
+  tools/mksongidx.py   tools/songlengths/mksongidx.py (SONGLEN.IDX)
+  tests/sidlog.py      sim/e2e/test_e2e.py (mb_requests: decoding the log)
+  tests/tunes/psid.cfg, testtune.s, rsidtune.s
+                       software/sid-tunes (CC0 test tunes)
+
+Modelled on Veranda's own programs (MIT, ~/Projects/geos): the MOD Player's
+window, playlist and transport icons (x16-mod, examples/veranda), Shell 2's
+title bars, the colour theme (sdk/lib/theme.h), the SDK (vrchoose.h).
+
+The emulator used by the gate is x16emu's branch "sidcard"
+(~/Projects/x16-emulator-sidcard): CommanderSID's emulator patches and
+firmware core (GPL) merged with the -mousescript branch.
+
+No C64 ROM images are part of this repository: RSID tunes need the user's
+own C64ROMS.BIN (CommanderSID's tools/c64roms) on the SD card.
+HVSC tunes are not part of it either.

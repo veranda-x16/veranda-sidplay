@@ -1,0 +1,12 @@
+# Veranda SID Player (tools/vpack.py)
+name        = SID Player
+class       = VSidPlay
+version     = 1.1
+author      = CommanderSID
+description = Plays SID tunes on the X16-SID card's real SID.
+mode        = 640x480
+api         = 5
+overlays    = banked
+icon        = icon.pbm
+tile        = tile.txt
+documents   = SID
